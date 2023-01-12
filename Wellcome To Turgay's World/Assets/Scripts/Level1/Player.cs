@@ -1,18 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using DG.Tweening;
 
-public class Player : MonoBehaviour
+public partial class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] int levelNumber;
+    Rigidbody rb;
+
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        //  mainMenuPanel=GameObject.FindGameObjectWithTag("MainMenuPanel").gameObject;
+        currentMaxMoveSpeed = maxMoveSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+
+        Movement();
+
+        CurveMovement();
+
+        Rotate();
     }
+
+
+
+
+ 
+
+
+   
+
+
+
+
+
+
+
 }
