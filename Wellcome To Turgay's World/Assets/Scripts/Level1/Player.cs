@@ -14,6 +14,7 @@ public partial class Player : MonoBehaviour
 
     void Start()
     {
+        audioSourcePlayer = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         //  mainMenuPanel=GameObject.FindGameObjectWithTag("MainMenuPanel").gameObject;
         currentMaxMoveSpeed = maxMoveSpeed;
@@ -27,15 +28,20 @@ public partial class Player : MonoBehaviour
         CurveMovement();
 
         Rotate();
+
+        
+    }
+
+    private void Update()
+    {
+        SoundControl(); 
     }
 
 
 
 
- 
 
 
-   
 
 
 
