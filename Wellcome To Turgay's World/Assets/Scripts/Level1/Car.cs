@@ -4,6 +4,7 @@ using System.Transactions;
 using UnityEngine;
 using PathCreation;
 using UnityEditor.Rendering;
+using PathCreation.Examples;
 
 public class Car : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Car : MonoBehaviour
     public float lifeTime;
 
     [SerializeField] GameObject player;
+
+    PathFollower pathFollower;
     void Start()
     {
 
@@ -31,15 +34,16 @@ public class Car : MonoBehaviour
         }
 
         InvokeRepeating("ActiveCoin", 5, periyod);
+        pathFollower=GetComponent<PathFollower>();
+        
     }
 
     private void FixedUpdate()
     {
-        distanceFromStart += currentSpeed * Time.deltaTime;
-        transform.position = pathCreator.path.GetPointAtDistance(distanceFromStart);
-        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceFromStart);
+       // MovementBezier(); //Path Follower kullandigim icin bunu kullnmiyorum ornek olsun diye burada.
 
-        Debug.Log(" speed  " +currentSpeed );
+      
+
     }
 
     void ActiveCoin()
@@ -77,4 +81,24 @@ public class Car : MonoBehaviour
         currentSpeed = speed;
     }
 
+
+    void MovementBezier()//Kodlarla yapmak yerine Path Follever componenti ekleyerk yaptigim icin bu metodu kullanmiyorum.Ornek olmasi icin burada.
+    {
+        
+            distanceFromStart += currentSpeed * Time.deltaTime;
+            transform.position = pathCreator.path.GetPointAtDistance(distanceFromStart);
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceFromStart);
+        
+    }
+
+    void FinishControl()
+    {
+        if (transform.position!=pathCreator.path.GetPoint(1))
+        {
+            distanceFromStart += currentSpeed * Time.deltaTime;
+            transform.position = pathCreator.path.GetPointAtDistance(distanceFromStart);
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceFromStart);
+
+        }
+    }
 }

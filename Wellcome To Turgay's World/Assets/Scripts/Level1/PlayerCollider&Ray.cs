@@ -21,9 +21,9 @@ public partial class Player
             canInput = true;
         }
 
-        if (other.gameObject.tag == "Gem")
+        if (other.gameObject.tag == "Gold")
         {
-            UpdateGemNumberCollider();
+            UpdateGoldNumberCollider();
         }
         if (other.gameObject.tag == "Finish")
         {

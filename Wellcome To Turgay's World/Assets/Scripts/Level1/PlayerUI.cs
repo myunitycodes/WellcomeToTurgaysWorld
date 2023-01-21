@@ -23,7 +23,7 @@ public partial class Player
         gemNumber = PlayerPrefs.GetInt("GemNumber");
     }
 
-    void UpdateGemNumberCollider()
+    void UpdateGoldNumberCollider()
     {
         gemNumber++;
         PlayerPrefs.SetInt("GemNumber",gemNumber);
